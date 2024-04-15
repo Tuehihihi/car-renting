@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+model Users{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  ten String?
+  email String? @unique
+  soDienThoai String?
+  anh String?
+  matKhau String?
+  ngayTao DateTime @default(now())
+  ids_YeuThich String[] @db.ObjectId
+
+  xes Xe[]
+  donThues DonThue[]
+  danhGias DanhGia[]
+  hoaDon HoaDon[]
+}
+
+model Xe {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  maXe String
+  mieuTa String
+  anh String
+  ngayTao DateTime @default(now())
+  phanLoai String
+  soChoNgoi Int   
+  soKhach Int
+  viTri String
+  userId String @db.ObjectId
+  gia Int
+
+  users Users @relation( fields: [userId], references: [id], onDelete: Cascade)
+  donThues DonThue[]
+}
+
+model DonThue {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  xeId String @db.ObjectId
+  ngayBatDau DateTime
+  ngayKetThuc DateTime
+  tongTien Int
+  ngayTao DateTime @default(now())
+  diemDon String
+
+  users Users @relation( fields: [userId], references: [id], onDelete: Cascade)
+  xe Xe @relation( fields: [xeId], references: [id] , onDelete: Cascade)
+  hoadon HoaDon[]
+}
+model HoaDon {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  donThueId String @db.ObjectId
+  userId String @db.ObjectId
+  ngayTao DateTime @default(now())
+  tongTien Int
+  users Users @relation( fields: [userId], references: [id], onDelete: Cascade)
+  donThue DonThue @relation(fields: [donThueId], references: [id], onDelete: Restrict)
+}
+model DanhGia {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  binhLuan String
+  ngayTao DateTime @default(now())
+
+  users Users @relation( fields: [userId], references: [id], onDelete: Cascade)
+}
