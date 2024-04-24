@@ -11,7 +11,7 @@ interface CarCardProps {
     data: SXe;
     donThue?: SDonThue;
     onAction?: (id:string) => void;
-   users: SUsers
+   users?: SUsers
     disabled?: boolean;
     actionLabel?: string;
     actionId?: string;
@@ -91,7 +91,7 @@ const CarCard: React.FC<CarCardProps>= ({
                      )}
                     {donThue && (
                     <div className="flex flex-col">
-                        <div>{users.soDienThoai}</div>
+                        <div>{users?.soDienThoai}</div>
                         <div>{donThue.diemDon}</div>
                     </div>
                         

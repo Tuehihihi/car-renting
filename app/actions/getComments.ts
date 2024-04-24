@@ -18,7 +18,7 @@ export default async function getComments() {
             ngayTao: danhGia.ngayTao.toISOString(),
             users : {
                 ...danhGia.users,
-                createdAt: danhGia.users.ngayTao.toISOString(),
+                ngayTao: danhGia.users.ngayTao.toISOString(),
             }
         })
     );

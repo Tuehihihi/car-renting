@@ -28,7 +28,6 @@ const Home = async({searchParams}: HomeProps) => {
                key = {xe.id}
                data = {xe}
                currentUser={currentUser}
-               
               />
             )
           })}

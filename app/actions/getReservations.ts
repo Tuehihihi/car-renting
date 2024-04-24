@@ -40,7 +40,7 @@ export default async function getReservations(
     const safeReservation = donThues.map(
         (donThue) => ({
             ...donThue,
-            createdAt: donThue.ngayTao.toISOString(),
+            ngayTao: donThue.ngayTao.toISOString(),
             ngayBatDau: donThue.ngayBatDau.toISOString(),
             ngayKetThuc: donThue.ngayKetThuc.toISOString(),
             xe: {
