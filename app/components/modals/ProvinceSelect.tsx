@@ -15,7 +15,6 @@ type ProvinceSelectProps = {
 const vietnamProvinces = [
     "Hà Nội",
     "Hồ Chí Minh",
-    
 ];
 
 const options = vietnamProvinces.map((province) => ({

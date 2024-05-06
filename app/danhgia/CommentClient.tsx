@@ -31,7 +31,6 @@ const CommentClient: React.FC<CommentClientProps> = ({
     )}
 
         <CommentInput 
-        danhGias={danhGias}
         currentUser={currentUser}
         disabled={disabled} 
             />

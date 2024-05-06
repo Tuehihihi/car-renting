@@ -9,7 +9,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 interface CommentInputProps{
-    danhGias: SDanhGia,
+    danhGias?: SDanhGia,
     currentUser: SUsers | null, 
     disabled?: boolean;
 }
@@ -44,7 +44,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
         .finally(() =>{
             setIsLoading(false);
         })
-    },[binhLuan, danhGias.id, loginModal])
+    },[binhLuan, danhGias?.id, loginModal])
     return(
        
             <div className="max-w-screen mx-auto">
@@ -58,7 +58,6 @@ const CommentInput: React.FC<CommentInputProps> = ({
                     <Button 
                         onClick={onCreateComment}
                         label="Gửi"
-                        
                         disable ={disabled}
                     />
                     </div>

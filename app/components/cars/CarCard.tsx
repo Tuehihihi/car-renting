@@ -11,7 +11,7 @@ interface CarCardProps {
     data: SXe;
     donThue?: SDonThue;
     onAction?: (id:string) => void;
-   users?: SUsers
+   users?: SUsers | null
     disabled?: boolean;
     actionLabel?: string;
     actionId?: string;
